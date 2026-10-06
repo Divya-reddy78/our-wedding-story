@@ -72,28 +72,228 @@ footer .big{font-size:42px;color:var(--ink);font-style:italic}
 .close{position:absolute;right:18px;top:14px;border:0;background:transparent;font-size:28px;cursor:pointer;color:var(--muted)}
 .modal-box h2{font-size:35px;font-weight:500;margin-top:0}.modal-box p{font-size:18px;color:var(--muted)}
 
-/* --- Groom-to-Bride Maze --- */
-.maze-section{background:#f6eee7;padding:100px 6vw;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.maze-wrap{max-width:900px;margin:auto;text-align:center}
-.maze-intro{max-width:680px;margin:0 auto 30px}
-.maze-intro p{color:var(--muted);font-size:18px}
-.maze-board{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:var(--shadow);max-width:850px;margin:auto}
-#mazeCanvas{display:block;width:100%;height:auto;max-width:810px;margin:auto;border-radius:14px;background:#fffaf3;touch-action:none}
-.maze-stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:18px 0 4px}
-.maze-stat{background:#fffaf3;border:1px solid var(--line);border-radius:999px;padding:8px 15px;font:12px Arial,sans-serif;color:var(--muted)}
-.maze-stat strong{color:var(--ink);font-size:14px}
-.maze-controls{display:grid;grid-template-columns:repeat(3,52px);grid-template-rows:repeat(2,52px);gap:8px;justify-content:center;margin:18px auto 10px}
-.maze-controls button{border:1px solid #dfcfc5;background:#fffaf3;color:var(--ink);border-radius:14px;font-size:22px;cursor:pointer;box-shadow:0 3px 8px rgba(70,45,35,.08);touch-action:manipulation}
-.maze-controls button:active{transform:scale(.96);background:#f2d9d2}
-.maze-controls .up{grid-column:2}.maze-controls .left{grid-column:1;grid-row:2}.maze-controls .down{grid-column:2;grid-row:2}.maze-controls .right{grid-column:3;grid-row:2}
-.maze-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px}
-.maze-action{border:0;background:var(--ink);color:#fff;padding:11px 18px;border-radius:999px;cursor:pointer;font:14px Arial,sans-serif}
-.maze-action.secondary{background:#e9c1b7;color:#573d37}
-.maze-status{min-height:28px;margin:12px 0 0;font-size:15px;color:var(--muted)}
-.maze-status.win{color:#805149;font-weight:600}
-.maze-note{font-size:12px;color:#9a877d;margin-top:12px}
-@media(max-width:850px){
-  .maze-section{padding:75px 5vw}.maze-board{padding:10px}.maze-controls{grid-template-columns:48px 48px 48px;grid-template-rows:48px 48px}
+/* =========================
+   LOVE GAME
+========================= */
+
+.love-game-section {
+    width: 100%;
+    padding: 90px 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.love-game-container {
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+.game-heading {
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 45px;
+}
+
+.game-eyebrow {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 18px;
+    opacity: 0.65;
+}
+
+.game-heading h2 {
+    margin: 0 0 22px;
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1;
+    font-weight: 500;
+}
+
+.game-description {
+    max-width: 760px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* GAME CARD */
+
+.love-game-card {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 28px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.65);
+    box-shadow: 0 15px 50px rgba(70, 45, 35, 0.08);
+    box-sizing: border-box;
+}
+
+.game-instruction {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+
+/* GAME AREA */
+
+#game-container {
+    width: 100%;
+    max-width: 820px;
+    height: 500px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+
+/* STATS */
+
+.game-stats {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 14px;
+    margin: 22px auto;
+    max-width: 650px;
+}
+
+.stat {
+    flex: 1;
+    min-width: 0;
+    padding: 15px 12px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 14px;
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    opacity: 0.55;
+    margin-bottom: 6px;
+}
+
+.stat strong {
+    font-size: 20px;
+}
+
+
+/* MESSAGE */
+
+.game-message {
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.5;
+    min-height: 25px;
+    margin: 12px auto 20px;
+}
+
+
+/* BUTTONS */
+
+.game-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.game-button {
+    border: none;
+    border-radius: 999px;
+    padding: 13px 25px;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.game-button:hover {
+    transform: translateY(-2px);
+}
+
+.game-button.primary {
+    background: #4b3832;
+    color: white;
+    box-shadow: 0 8px 20px rgba(75, 56, 50, 0.18);
+}
+
+.game-button.secondary {
+    background: #ead4cc;
+    color: #4b3832;
+}
+
+
+/* IMPORTANT:
+   Hide the old arrow controls and phone tip
+*/
+
+#left-button,
+#right-button,
+.arrow-buttons,
+.mobile-controls,
+.game-tip,
+.tip,
+.controls-tip {
+    display: none !important;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .love-game-section {
+        padding: 60px 15px;
+    }
+
+    .love-game-card {
+        padding: 16px;
+        border-radius: 20px;
+    }
+
+    .game-heading h2 {
+        font-size: 42px;
+    }
+
+    .game-description {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    #game-container {
+        height: 420px;
+        border-radius: 16px;
+    }
+
+    .game-stats {
+        gap: 7px;
+    }
+
+    .stat {
+        padding: 12px 6px;
+    }
+
+    .stat strong {
+        font-size: 16px;
+    }
+
+    .stat-label {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .game-controls {
+        flex-wrap: wrap;
+    }
 }
 
 @media(max-width:850px){
@@ -157,34 +357,66 @@ footer .big{font-size:42px;color:var(--ink);font-style:italic}
 </section>
 
 
-<section class="maze-section" id="maze">
-  <div class="maze-wrap">
-    <div class="maze-intro">
-      <div class="kicker">A little challenge for the groom</div>
-      <div class="quote">“Find your way to me.”</div>
-      <p>Getting to the bride should never be too easy. Navigate the maze, avoid the walls, and make your way from the groom to the bride. No shortcuts. ♥</p>
+<section class="love-game-section">
+    <div class="love-game-container">
+
+        <div class="game-heading">
+            <p class="game-eyebrow">A LITTLE GAME FOR YOU</p>
+
+            <h2>“Catch a little love.”</h2>
+
+            <p class="game-description">
+                Catch the falling hearts, collect the rings, and try not to let
+                the broken hearts get away. Your mission: collect enough love
+                to reach your bride. ♥
+            </p>
+        </div>
+
+        <div class="love-game-card">
+
+            <div class="game-instruction">
+                Catch 20 hearts to win ♥
+            </div>
+
+            <!-- YOUR EXISTING GAME CANVAS / GAME AREA -->
+            <div id="game-container">
+                <!-- existing game content -->
+            </div>
+
+            <div class="game-stats">
+                <div class="stat">
+                    <span class="stat-label">LOVE</span>
+                    <strong id="love-score">0 / 20</strong>
+                </div>
+
+                <div class="stat">
+                    <span class="stat-label">TIME</span>
+                    <strong><span id="game-time">0</span>s</strong>
+                </div>
+
+                <div class="stat">
+                    <span class="stat-label">HIGH SCORE</span>
+                    <strong id="high-score">0</strong>
+                </div>
+            </div>
+
+            <div id="game-message" class="game-message">
+                Catch enough love to reach your bride. ♥
+            </div>
+
+            <div class="game-controls">
+                <button id="start-game" class="game-button primary">
+                    Start catching ♥
+                </button>
+
+                <button id="reset-game" class="game-button secondary">
+                    Reset
+                </button>
+            </div>
+
+        </div>
+
     </div>
-    <div class="maze-board">
-      <canvas id="mazeCanvas" aria-label="A maze game where the groom must reach the bride"></canvas>
-      <div class="maze-stats">
-        <div class="maze-stat">Moves <strong id="mazeMoves">0</strong></div>
-        <div class="maze-stat">Time <strong id="mazeTime">00:00</strong></div>
-        <div class="maze-stat">Best <strong id="mazeBest">—</strong></div>
-      </div>
-      <div class="maze-status" id="mazeStatus">Use ↑ ↓ ← → or W A S D. Good luck, groom. 😌</div>
-      <div class="maze-controls" aria-label="Maze touch controls">
-        <button class="up" data-move="up" aria-label="Move up">↑</button>
-        <button class="left" data-move="left" aria-label="Move left">←</button>
-        <button class="down" data-move="down" aria-label="Move down">↓</button>
-        <button class="right" data-move="right" aria-label="Move right">→</button>
-      </div>
-      <div class="maze-actions">
-        <button class="maze-action" id="newMaze">New difficult maze</button>
-        <button class="maze-action secondary" id="resetMaze">Reset</button>
-      </div>
-      <div class="maze-note">The maze is generated in your browser, so every “New difficult maze” is a fresh challenge.</div>
-    </div>
-  </div>
 </section>
 
 <section class="section" id="letters">
