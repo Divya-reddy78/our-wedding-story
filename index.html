@@ -53,29 +53,6 @@ h1{font-size:clamp(52px,7vw,94px);line-height:.98;font-weight:500;margin:15px 0 
 .envelope{background:linear-gradient(145deg,#fffaf3,#f7e5df);border:1px solid #ead3cc;border-radius:20px;padding:28px;text-align:left;cursor:pointer;min-height:170px;transition:.25s}
 .envelope:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
 .envelope .icon{font-size:28px}.envelope h3{margin:12px 0 5px;font-weight:500}.envelope small{color:var(--muted)}
-
-.game-section{background:var(--cream);padding:105px 6vw;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.game-wrap{max-width:900px;margin:auto;text-align:center}
-.game-card{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:34px;box-shadow:var(--shadow)}
-.game-title{font-size:clamp(34px,4vw,52px);font-weight:500;line-height:1.05;margin:8px 0 12px}
-.game-intro{color:var(--muted);font-size:17px;max-width:650px;margin:0 auto 22px}
-.maze{display:grid;grid-template-columns:repeat(15,1fr);width:min(100%,600px);aspect-ratio:15/11;margin:28px auto 20px;border:8px solid #e9d9ce;border-radius:18px;overflow:hidden;background:#f3e8de;touch-action:none}
-.cell{position:relative;display:grid;place-items:center;min-width:0;min-height:0}
-.cell.wall{background:#6f554c}
-.cell.path{background:#fffaf3}
-.cell.groom{background:#f5d8d0}
-.cell.bride{background:#f3e1d8}
-.cell.groom::after{content:'🤵🏻';font-size:clamp(18px,3vw,30px);line-height:1}
-.cell.bride::after{content:'👰🏻';font-size:clamp(18px,3vw,30px);line-height:1}
-.game-status{min-height:28px;font-size:16px;color:var(--muted);margin:10px 0}
-.game-status.win{color:#805149;font-weight:600}
-.game-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:12px}
-.game-btn{border:0;background:var(--ink);color:#fff;padding:11px 18px;border-radius:999px;cursor:pointer;font-size:14px}
-.game-btn.secondary{background:#ead0c7;color:#573d37}
-.controls{display:grid;grid-template-columns:repeat(3,54px);grid-template-rows:repeat(2,54px);gap:7px;justify-content:center;margin:20px auto 0}
-.control{border:1px solid #ddc8bd;background:#fffaf3;color:var(--ink);border-radius:14px;cursor:pointer;font-size:20px;box-shadow:0 4px 10px rgba(70,45,35,.06);-webkit-tap-highlight-color:transparent}
-.control.up{grid-column:2}.control.left{grid-column:1;grid-row:2}.control.down{grid-column:2;grid-row:2}.control.right{grid-column:3;grid-row:2}
-@media(min-width:851px){.controls{display:none}}
 .future{background:#f4ede4}
 .future-list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:800px;margin:auto}
 .future-item{padding:18px 20px;background:rgba(255,255,255,.6);border:1px solid var(--line);border-radius:15px}
@@ -94,6 +71,31 @@ footer .big{font-size:42px;color:var(--ink);font-style:italic}
 .modal-box{max-width:650px;background:var(--paper);border-radius:26px;padding:42px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.25)}
 .close{position:absolute;right:18px;top:14px;border:0;background:transparent;font-size:28px;cursor:pointer;color:var(--muted)}
 .modal-box h2{font-size:35px;font-weight:500;margin-top:0}.modal-box p{font-size:18px;color:var(--muted)}
+
+/* --- Groom-to-Bride Maze --- */
+.maze-section{background:#f6eee7;padding:100px 6vw;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.maze-wrap{max-width:900px;margin:auto;text-align:center}
+.maze-intro{max-width:680px;margin:0 auto 30px}
+.maze-intro p{color:var(--muted);font-size:18px}
+.maze-board{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:var(--shadow);max-width:850px;margin:auto}
+#mazeCanvas{display:block;width:100%;height:auto;max-width:810px;margin:auto;border-radius:14px;background:#fffaf3;touch-action:none}
+.maze-stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:18px 0 4px}
+.maze-stat{background:#fffaf3;border:1px solid var(--line);border-radius:999px;padding:8px 15px;font:12px Arial,sans-serif;color:var(--muted)}
+.maze-stat strong{color:var(--ink);font-size:14px}
+.maze-controls{display:grid;grid-template-columns:repeat(3,52px);grid-template-rows:repeat(2,52px);gap:8px;justify-content:center;margin:18px auto 10px}
+.maze-controls button{border:1px solid #dfcfc5;background:#fffaf3;color:var(--ink);border-radius:14px;font-size:22px;cursor:pointer;box-shadow:0 3px 8px rgba(70,45,35,.08);touch-action:manipulation}
+.maze-controls button:active{transform:scale(.96);background:#f2d9d2}
+.maze-controls .up{grid-column:2}.maze-controls .left{grid-column:1;grid-row:2}.maze-controls .down{grid-column:2;grid-row:2}.maze-controls .right{grid-column:3;grid-row:2}
+.maze-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+.maze-action{border:0;background:var(--ink);color:#fff;padding:11px 18px;border-radius:999px;cursor:pointer;font:14px Arial,sans-serif}
+.maze-action.secondary{background:#e9c1b7;color:#573d37}
+.maze-status{min-height:28px;margin:12px 0 0;font-size:15px;color:var(--muted)}
+.maze-status.win{color:#805149;font-weight:600}
+.maze-note{font-size:12px;color:#9a877d;margin-top:12px}
+@media(max-width:850px){
+  .maze-section{padding:75px 5vw}.maze-board{padding:10px}.maze-controls{grid-template-columns:48px 48px 48px;grid-template-rows:48px 48px}
+}
+
 @media(max-width:850px){
   .navlinks{display:none}.hero-inner{grid-template-columns:1fr;gap:30px}.hero-photo{height:480px;order:-1}
   .story-grid,.letters{grid-template-columns:1fr}.future-list{grid-template-columns:1fr}
@@ -106,7 +108,7 @@ footer .big{font-size:42px;color:var(--ink);font-style:italic}
 <nav class="nav">
   <a class="brand" href="#home"><span>♡</span> Just You & Me</a>
   <div class="navlinks">
-    <a href="#story">Our Story</a><a href="#distance">Long Distance</a><a href="#game">The Challenge</a><a href="#letters">Letters</a>
+    <a href="#story">Our Story</a><a href="#distance">Long Distance</a><a href="#maze">The Maze</a><a href="#letters">Letters</a>
     <a href="#future">Our Future</a>
   </div>
   <button class="ok-btn" onclick="openModal('okay')">♥ We're Okay</button>
@@ -154,23 +156,33 @@ footer .big{font-size:42px;color:var(--ink);font-style:italic}
   </div>
 </section>
 
-<section class="game-section" id="game">
-  <div class="game-wrap">
-    <div class="kicker">A tiny challenge · just for you</div>
-    <h2 class="game-title">Find your way to the bride ♥</h2>
-    <p class="game-intro">Your mission, groom: make it through the maze and reach your bride. Use the arrow keys or WASD — and no peeking at the walls!</p>
-    <div class="game-card">
-      <div class="maze" id="maze" aria-label="Wedding maze game"></div>
-      <div class="game-status" id="gameStatus">The bride is waiting… take your first step.</div>
-      <div class="game-actions">
-        <button class="game-btn" type="button" onclick="resetMaze()">Start again ↻</button>
+
+<section class="maze-section" id="maze">
+  <div class="maze-wrap">
+    <div class="maze-intro">
+      <div class="kicker">A little challenge for the groom</div>
+      <div class="quote">“Find your way to me.”</div>
+      <p>Getting to the bride should never be too easy. Navigate the maze, avoid the walls, and make your way from the groom to the bride. No shortcuts. ♥</p>
+    </div>
+    <div class="maze-board">
+      <canvas id="mazeCanvas" aria-label="A maze game where the groom must reach the bride"></canvas>
+      <div class="maze-stats">
+        <div class="maze-stat">Moves <strong id="mazeMoves">0</strong></div>
+        <div class="maze-stat">Time <strong id="mazeTime">00:00</strong></div>
+        <div class="maze-stat">Best <strong id="mazeBest">—</strong></div>
       </div>
-      <div class="controls" aria-label="Maze controls">
-        <button class="control up" type="button" onclick="moveGroom(0,-1)" aria-label="Move up">↑</button>
-        <button class="control left" type="button" onclick="moveGroom(-1,0)" aria-label="Move left">←</button>
-        <button class="control down" type="button" onclick="moveGroom(0,1)" aria-label="Move down">↓</button>
-        <button class="control right" type="button" onclick="moveGroom(1,0)" aria-label="Move right">→</button>
+      <div class="maze-status" id="mazeStatus">Use ↑ ↓ ← → or W A S D. Good luck, groom. 😌</div>
+      <div class="maze-controls" aria-label="Maze touch controls">
+        <button class="up" data-move="up" aria-label="Move up">↑</button>
+        <button class="left" data-move="left" aria-label="Move left">←</button>
+        <button class="down" data-move="down" aria-label="Move down">↓</button>
+        <button class="right" data-move="right" aria-label="Move right">→</button>
       </div>
+      <div class="maze-actions">
+        <button class="maze-action" id="newMaze">New difficult maze</button>
+        <button class="maze-action secondary" id="resetMaze">Reset</button>
+      </div>
+      <div class="maze-note">The maze is generated in your browser, so every “New difficult maze” is a fresh challenge.</div>
     </div>
   </div>
 </section>
@@ -264,67 +276,146 @@ function openModal(key){
 function closeModal(){document.getElementById('modal').classList.remove('show')}
 
 
-/* Tiny wedding maze game */
-const mazeMap = [
-  "###############",
-  "#G#       #   #",
-  "# # ##### # # #",
-  "# #     #   # #",
-  "# ##### ##### #",
-  "#     #       #",
-  "##### # #######",
-  "#     #       #",
-  "# ### ##### # #",
-  "#   #       #B#",
-  "###############"
-];
-let groom = {x:1,y:1};
-const bride = {x:13,y:9};
-let gameWon = false;
+/* --- Groom-to-Bride Maze Game --- */
+(() => {
+  const canvas = document.getElementById('mazeCanvas');
+  const ctx = canvas.getContext('2d');
+  const movesEl = document.getElementById('mazeMoves');
+  const timeEl = document.getElementById('mazeTime');
+  const bestEl = document.getElementById('mazeBest');
+  const statusEl = document.getElementById('mazeStatus');
+  const newBtn = document.getElementById('newMaze');
+  const resetBtn = document.getElementById('resetMaze');
 
-function renderMaze(){
-  const maze = document.getElementById('maze');
-  maze.innerHTML = '';
-  mazeMap.forEach((row,y)=>row.split('').forEach((cell,x)=>{
-    const el=document.createElement('div');
-    el.className='cell ' + (cell==='#'?'wall':'path');
-    if(x===groom.x && y===groom.y) el.classList.add('groom');
-    if(x===bride.x && y===bride.y) el.classList.add('bride');
-    maze.appendChild(el);
+  // Odd dimensions make a clean, fully connected maze. This size is intentionally tricky.
+  const COLS = 41, ROWS = 27;
+  let maze, player, goal, moves, started, won, startedAt, timer;
+  let best = Number(localStorage.getItem('weddingMazeBest') || 0);
+  if (best) bestEl.textContent = formatTime(best);
+
+  function formatTime(ms){
+    const total = Math.floor(ms / 1000);
+    return String(Math.floor(total/60)).padStart(2,'0') + ':' + String(total%60).padStart(2,'0');
+  }
+
+  function makeGrid(){
+    return Array.from({length:ROWS}, () => Array(COLS).fill(1));
+  }
+
+  function generateMaze(){
+    maze = makeGrid();
+    const stack = [[1,1]];
+    maze[1][1] = 0;
+    const dirs = [[2,0],[-2,0],[0,2],[0,-2]];
+    while(stack.length){
+      const [r,c] = stack[stack.length-1];
+      const options = dirs
+        .map(([dr,dc]) => [r+dr,c+dc,dr,dc])
+        .filter(([nr,nc]) => nr>0 && nr<ROWS-1 && nc>0 && nc<COLS-1 && maze[nr][nc]===1);
+      if(!options.length){ stack.pop(); continue; }
+      const [nr,nc,dr,dc] = options[Math.floor(Math.random()*options.length)];
+      maze[r+dr/2][c+dc/2] = 0;
+      maze[nr][nc] = 0;
+      stack.push([nr,nc]);
+    }
+    // Start top-left, bride bottom-right. Both are open cells in the generated maze.
+    player = {r:1,c:1};
+    goal = {r:ROWS-2,c:COLS-2};
+  }
+
+  function cellSize(){
+    return Math.min(18, Math.floor((canvas.clientWidth || 810) / COLS));
+  }
+
+  function resizeCanvas(){
+    const width = Math.min(810, canvas.parentElement.clientWidth - 4);
+    const size = Math.max(7, Math.floor(width / COLS));
+    canvas.width = size * COLS;
+    canvas.height = size * ROWS;
+    draw();
+  }
+
+  function draw(){
+    const size = canvas.width / COLS;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = '#fffaf3';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    // Walls
+    ctx.fillStyle = '#4a3933';
+    for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++) if(maze[r][c]){
+      ctx.fillRect(c*size,r*size,size+.4,size+.4);
+    }
+
+    // Subtle path cells
+    ctx.fillStyle = '#f8eee6';
+    for(let r=1;r<ROWS-1;r++) for(let c=1;c<COLS-1;c++) if(!maze[r][c]){
+      ctx.fillRect(c*size+size*.16,r*size+size*.16,size*.68,size*.68);
+    }
+
+    // Bride goal
+    ctx.font = `${Math.max(13,size*.78)}px serif`;
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText('👰🏻‍♀️', (goal.c+.5)*size, (goal.r+.5)*size);
+
+    // Groom
+    ctx.fillText('🤵🏻‍♂️', (player.c+.5)*size, (player.r+.5)*size);
+  }
+
+  function canMove(r,c){
+    return r>=0 && r<ROWS && c>=0 && c<COLS && maze[r][c]===0;
+  }
+
+  function startTimer(){
+    if(started) return;
+    started=true; startedAt=Date.now();
+    timer=setInterval(() => { if(!won) timeEl.textContent=formatTime(Date.now()-startedAt); },250);
+    statusEl.textContent='Keep going… the bride is waiting. ♥';
+  }
+
+  function move(dr,dc){
+    if(won) return;
+    const nr=player.r+dr, nc=player.c+dc;
+    if(!canMove(nr,nc)) {
+      statusEl.textContent='Nope. That way is blocked. Try another route. 😏';
+      return;
+    }
+    startTimer();
+    player={r:nr,c:nc}; moves++; movesEl.textContent=moves; draw();
+    if(player.r===goal.r && player.c===goal.c){
+      won=true; clearInterval(timer);
+      const elapsed=Date.now()-startedAt;
+      timeEl.textContent=formatTime(elapsed);
+      if(!best || elapsed<best){ best=elapsed; localStorage.setItem('weddingMazeBest',best); bestEl.textContent=formatTime(best); }
+      statusEl.className='maze-status win';
+      statusEl.textContent=`You found your bride! ♥ ${moves} moves in ${formatTime(elapsed)}. Now come get your reward. 😌`;
+    }
+  }
+
+  function reset(){
+    clearInterval(timer); started=false; won=false; moves=0; startedAt=0;
+    player={r:1,c:1}; movesEl.textContent='0'; timeEl.textContent='00:00';
+    statusEl.className='maze-status'; statusEl.textContent='Use ↑ ↓ ← → or W A S D. Good luck, groom. 😌';
+    draw();
+  }
+
+  function newMaze(){ generateMaze(); reset(); }
+
+  document.addEventListener('keydown', e => {
+    const map={ArrowUp:[-1,0],w:[-1,0],W:[-1,0],ArrowDown:[1,0],s:[1,0],S:[1,0],ArrowLeft:[0,-1],a:[0,-1],A:[0,-1],ArrowRight:[0,1],d:[0,1],D:[0,1]};
+    if(map[e.key] && document.getElementById('maze').getBoundingClientRect().top < window.innerHeight && document.getElementById('maze').getBoundingClientRect().bottom > 0){
+      e.preventDefault(); move(...map[e.key]);
+    }
+  });
+
+  document.querySelectorAll('.maze-controls button').forEach(btn => btn.addEventListener('click', () => {
+    const d={up:[-1,0],down:[1,0],left:[0,-1],right:[0,1]}[btn.dataset.move]; move(...d);
   }));
-}
-
-function moveGroom(dx,dy){
-  if(gameWon) return;
-  const nx=groom.x+dx, ny=groom.y+dy;
-  if(ny<0 || ny>=mazeMap.length || nx<0 || nx>=mazeMap[0].length || mazeMap[ny][nx]==='#') return;
-  groom={x:nx,y:ny};
-  renderMaze();
-  if(groom.x===bride.x && groom.y===bride.y){
-    gameWon=true;
-    document.getElementById('gameStatus').textContent='You made it! ♥ Now come get your bride.';
-    document.getElementById('gameStatus').classList.add('win');
-  }
-}
-
-function resetMaze(){
-  groom={x:1,y:1};
-  gameWon=false;
-  const status=document.getElementById('gameStatus');
-  status.textContent='The bride is waiting… take your first step.';
-  status.classList.remove('win');
-  renderMaze();
-}
-
-document.addEventListener('keydown', (event)=>{
-  const key=event.key.toLowerCase();
-  const moves={arrowup:[0,-1],w:[0,-1],arrowdown:[0,1],s:[0,1],arrowleft:[-1,0],a:[-1,0],arrowright:[1,0],d:[1,0]};
-  if(moves[key]){
-    event.preventDefault();
-    moveGroom(...moves[key]);
-  }
-});
-renderMaze();
+  newBtn.addEventListener('click', newMaze);
+  resetBtn.addEventListener('click', reset);
+  window.addEventListener('resize', resizeCanvas);
+  generateMaze(); reset(); resizeCanvas();
+})();
 
 /* Set this to the date/time you want the countdown to reach.
    Example: 2026-11-29T09:00:00+05:30 */
